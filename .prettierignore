@@ -1,0 +1,3 @@
+# js is linted + prettier with xo
+*.js
+#!.xo-config.js
