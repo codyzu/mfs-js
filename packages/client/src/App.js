@@ -1,5 +1,11 @@
+import {createClient, Provider} from 'urql';
 import logo from './logo.svg';
 import './App.css';
+import Home from './Home';
+
+const client = createClient({
+  url: 'http://localhost:3001/graphql',
+});
 
 function App() {
   return (
@@ -18,6 +24,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <Provider value={client}>
+        <Home />
+      </Provider>
     </div>
   );
 }

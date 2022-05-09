@@ -1,6 +1,6 @@
 module.exports = {
   prettier: true,
-  space: 2,
+  space: true,
   overrides: [
     {
       files: "packages/client/**/*.js",
@@ -20,7 +20,6 @@ module.exports = {
         "node/file-extension-in-import": "off",
         "import/extensions": "off"
       },
-      // space: 2
     },
     {
       files: "packages/client/**/*.test.js",

@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "prettier -c . '!packages' && turbo run lint",
+    "lint": "prettier -c . '!packages' '!*.js' && turbo run lint",
+    "lint:fix": "xo --fix",
+    "format": "prettier -c . '!packages' '!*.js' && turbo run format",
     "format:fix": "prettier -w .",
-    "format": "prettier -c ."
+    "dev": "FORCE_COLOR=2 turbo run dev"
   },
   "author": "",
   "license": "ISC",
