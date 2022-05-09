@@ -16,7 +16,7 @@ function Home() {
   return (
     <Card>
       <CardBody>
-        <CardText>
+        <CardText className="text-center">
           Welcome Home{' '}
           <p>
             {result.loading
