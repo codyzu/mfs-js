@@ -1,3 +1,4 @@
+import {useEffect} from 'react';
 import {Card, CardBody, CardText} from 'reactstrap';
 import {useQuery} from 'urql';
 
@@ -12,19 +13,23 @@ function Home() {
     query: todosQuery,
   });
 
-  console.log(result);
+  useEffect(() => {
+    console.log(result);
+  }, [result]);
+
+  // Console.log(result);
+
+  // Console.log(result);
   return (
     <Card>
       <CardBody>
+        <CardText className="text-center">Welcome Home </CardText>
         <CardText className="text-center">
-          Welcome Home{' '}
-          <p>
-            {result.loading
-              ? 'Loading'
-              : result.error
-              ? 'Error'
-              : JSON.stringify(result.data, null, 2)}
-          </p>
+          {result.loading
+            ? 'Loading'
+            : result.error
+            ? 'Error'
+            : JSON.stringify(result.data, null, 2)}
         </CardText>
       </CardBody>
     </Card>
