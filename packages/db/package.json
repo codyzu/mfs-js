@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "up": "docker-compose up -d",
     "migrate": "postgrator",
     "down": "docker-compose down",

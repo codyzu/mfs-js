@@ -22,7 +22,7 @@ module.exports = {
       },
     },
     {
-      files: "packages/client/**/*.test.js",
+      files: "packages/**/*.test.js",
       envs: ['es2021', 'jest'],
     },
   ],

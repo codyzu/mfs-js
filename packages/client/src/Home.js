@@ -23,7 +23,7 @@ function Home() {
   return (
     <Card>
       <CardBody>
-        <CardText className="text-center">Welcome Home </CardText>
+        <CardText className="text-center">Welcome Home</CardText>
         <CardText className="text-center">
           {result.loading
             ? 'Loading'
