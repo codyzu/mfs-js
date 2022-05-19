@@ -20,8 +20,7 @@ export async function getToppingsForPizzas(pizzas, {pg}) {
           AND pizzas.id = ANY(${pizzaIds})
         INNER JOIN toppings
           ON toppings.id = pizzas_toppings.topping
-        GROUP BY pizzas.id
-        `,
+        GROUP BY pizzas.id`,
   );
   return rows.map((r) => r.toppings);
 }
