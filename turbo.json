@@ -3,29 +3,19 @@
   "baseBranch": "origin/main",
   "pipeline": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        ".next/**"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": [".next/**"]
     },
     "test": {
-      "dependsOn": [
-        "^build"
-      ],
+      "dependsOn": ["^build"],
       "outputs": []
     },
     "test:watch": {
-      "dependsOn": [
-        "^build"
-      ],
+      "dependsOn": ["^build"],
       "cache": false
     },
     "lint": {
-      "dependsOn": [
-        "format"
-      ],
+      "dependsOn": ["format"],
       "outputs": []
     },
     "format": {

@@ -7,8 +7,8 @@
     "up": "docker-compose up -d",
     "migrate": "postgrator",
     "down": "docker-compose down",
-    "format": "prettier -c .",
-    "format:fix": "prettier -w ."
+    "format": "prettier -c . '!**/*.js'",
+    "format:fix": "prettier -w . '!*.js'"
   },
   "author": "",
   "license": "ISC",

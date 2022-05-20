@@ -4,7 +4,7 @@ module.exports = {
   overrides: [
     {
       files: "packages/client/**/*.js",
-      envs: ['es2021', 'browser'],
+      envs: ["es2021", "browser"],
       extends: "xo-react",
       rules: {
         "react/react-in-jsx-scope": "off",
@@ -18,18 +18,18 @@ module.exports = {
           },
         ],
         "node/file-extension-in-import": "off",
-        "import/extensions": "off"
+        "import/extensions": "off",
       },
     },
     {
       files: "packages/**/*.test.js",
-      envs: ['es2021', 'jest'],
+      envs: ["es2021", "jest"],
     },
     {
       files: "packages/db/**/*.js",
       rules: {
-        "unicorn/prefer-module": "off"
-      }
-    }
+        "unicorn/prefer-module": "off",
+      },
+    },
   ],
 };

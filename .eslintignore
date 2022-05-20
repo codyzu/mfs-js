@@ -1,0 +1,2 @@
+# eslint (used under the hood by xo) ignores dot (.) files, we can negate that ignore here
+!.prettierrc.js

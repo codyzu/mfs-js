@@ -10,7 +10,7 @@
     "dev": "nodemon index.js",
     "lint": "xo --cwd ../.. packages/server",
     "lint:fix": "xo --fix --cwd ../.. packages/server",
-    "format": "prettier -c . '!*.js'"
+    "format": "prettier -c . '!**/*.js'"
   },
   "type": "module",
   "author": "",

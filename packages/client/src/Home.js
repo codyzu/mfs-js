@@ -2,11 +2,14 @@ import {useEffect} from 'react';
 import {Card, CardBody, CardText} from 'reactstrap';
 import {useQuery} from 'urql';
 
-const todosQuery = `
-  query { 
-    add(x: 2, y: 2)
+const todosQuery = `query { 
+  getPizzas {
+    name
+    toppings {
+      name
+    }
   }
-`;
+}`;
 
 function Home() {
   const [result, reexecuteQuery] = useQuery({

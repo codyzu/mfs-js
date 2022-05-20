@@ -25,7 +25,7 @@
     "test:watch": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "xo --cwd ../.. packages/client",
-    "format": "prettier -c . '!*.js'"
+    "format": "prettier -c . '!**/*.js'"
   },
   "eslintConfig_bak": {
     "extends": [

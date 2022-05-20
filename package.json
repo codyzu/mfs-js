@@ -6,10 +6,10 @@
   "scripts": {
     "test": "FORCE_COLOR=2 turbo run test",
     "test:watch": "FORCE_COLOR=2 turbo run test:watch",
-    "lint": "prettier -c . '!packages' '!*.js' && turbo run lint",
-    "lint:fix": "xo --fix",
-    "format": "prettier -c . '!packages' '!*.js' && turbo run format",
-    "format:fix": "prettier -w .",
+    "lint": "prettier -c . '!packages' '!**/*.js' && xo . '.*.js' '!packages' && FORCE_COLOR=2 turbo run lint",
+    "lint:fix": "xo --fix . '.*.js'",
+    "format": "prettier -c . '!packages' '!**/*.js' && turbo run format",
+    "format:fix": "prettier -w . '!**/*.js'",
     "dev": "FORCE_COLOR=2 turbo run dev"
   },
   "author": "",
