@@ -3,7 +3,7 @@ module.exports = {
   space: true,
   overrides: [
     {
-      files: "packages/client/**/*.js",
+      files: "packages/client/**/*.jsx",
       envs: ["es2021", "browser"],
       extends: "xo-react",
       rules: {
@@ -11,10 +11,7 @@ module.exports = {
         "unicorn/filename-case": [
           "error",
           {
-            cases: {
-              camelCase: true,
-              pascalCase: true,
-            },
+            case: "pascalCase"
           },
         ],
         "node/file-extension-in-import": "off",

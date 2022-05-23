@@ -2,9 +2,7 @@ import PropTypes from 'prop-types';
 import {
   Card,
   CardBody,
-  CardHeader,
   CardImg,
-  CardText,
   CardTitle,
   ListGroup,
   ListGroupItem,
