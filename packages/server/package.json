@@ -7,7 +7,7 @@
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "test:watch": "npm run test --watch",
     "start": "node index.js",
-    "dev": "nodemon index.js",
+    "dev": "GOOGLE_APPLICATION_CREDENTIALS=./dev-cody.service-account.json nodemon index.js",
     "lint": "xo --cwd ../.. packages/server",
     "lint:fix": "xo --fix --cwd ../.. packages/server",
     "format": "prettier -c . '!**/*.js'"
@@ -18,6 +18,7 @@
   "dependencies": {
     "@fastify/cors": "^7.0.0",
     "@fastify/postgres": "^4.0.1",
+    "@google-cloud/storage": "^5.20.5",
     "@graphql-tools/schema": "^8.3.11",
     "@nearform/sql": "^1.9.2",
     "fastify": "^3.29.0",

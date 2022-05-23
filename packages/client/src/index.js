@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import 'bootswatch/dist/darkly/bootstrap.min.css';
+import 'bootswatch/dist/litera/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
 root.render(
