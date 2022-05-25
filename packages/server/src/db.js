@@ -10,6 +10,12 @@ export async function getPizzas({pg}) {
   return rows;
 }
 
+export async function getPizza({pg}, id) {
+  const {rows} = await pg.query(SQL`SELECT * FROM pizzas WHERE id = ${id}`);
+  console.log('R', rows);
+  return rows[0];
+}
+
 export async function getToppingsForPizzas(pizzas, {pg}) {
   const pizzaIds = pizzas.map((p) => p.id);
   const {rows} = await pg.query(

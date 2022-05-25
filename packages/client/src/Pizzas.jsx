@@ -1,5 +1,6 @@
 import {useQuery} from 'urql';
 import {Container, Row, Col} from 'reactstrap';
+import {Link} from 'react-router-dom';
 import {useEffect} from 'react';
 import Pizza from './Pizza';
 
@@ -39,6 +40,7 @@ export default function Pizzas() {
         {data.getPizzas.map((pizza) => (
           <Col key={pizza.id}>
             <Pizza {...pizza} />
+            <Link to={`/pizza/${pizza.id}`}>Details</Link>
           </Col>
         ))}
       </Row>

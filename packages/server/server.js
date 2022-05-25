@@ -35,6 +35,7 @@ const typeDefs = `
   type Query {
     getToppings: [Topping]
     getPizzas: [Pizza]
+    getPizza(id: Int!): Pizza!
     add(x: Int, y: Int): Int
   }
 `;
@@ -60,6 +61,7 @@ const resolvers = {
   Query: {
     getToppings: (_, __, context) => db.getToppings(context.app),
     getPizzas: (_, __, context) => db.getPizzas(context.app),
+    getPizza: (_, {id}, context) => db.getPizza(context.app, id),
     add: async (_, {x, y}) => x + y,
   },
 };

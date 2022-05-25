@@ -19,7 +19,9 @@ import {Link, NavLink as RRNavLink} from 'react-router-dom';
 export default function Navigation() {
   return (
     <Navbar dark color="dark" expand="md" container="md">
-      <NavbarBrand href="/">MFS Pizza</NavbarBrand>
+      <NavbarBrand to="/" tag={Link}>
+        MFS Pizza
+      </NavbarBrand>
       <NavbarToggler onClick={() => undefined} />
       <Collapse navbar>
         <Nav navbar className="me-auto">
