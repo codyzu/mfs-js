@@ -2,7 +2,7 @@
 
 Modern full-stack javascript
 
-This repo serves a POC of my talk on Mondern full-stack javascript.
+This repo serves a POC of my talk on modern full-stack javascript.
 
 ## Setup
 
