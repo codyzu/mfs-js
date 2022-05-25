@@ -10,7 +10,10 @@
     "lint:fix": "xo --fix . '.*.js'",
     "format": "prettier -c . '!packages' '!**/*.js' && turbo run format",
     "format:fix": "prettier -w . '!**/*.js'",
-    "dev": "FORCE_COLOR=2 turbo run dev"
+    "dev": "FORCE_COLOR=2 turbo run dev",
+    "db:up": "npm run -w mfs-db up",
+    "db:down": "npm run -w mfs-db down",
+    "db:migrate": "npm run -w mfs-db migrate"
   },
   "author": "",
   "license": "ISC",
