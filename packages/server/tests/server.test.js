@@ -4,7 +4,7 @@ afterAll(() => app.close());
 
 test('Gets pizzas', async () => {
   const query = `query { 
-    getPizzas {
+    pizzaList {
       name
       toppings {
         name
@@ -24,7 +24,7 @@ test('Gets pizzas', async () => {
   expect(errors).toBeUndefined();
   expect(data).toMatchInlineSnapshot(`
     Object {
-      "getPizzas": Array [
+      "pizzaList": Array [
         Object {
           "name": "margarite",
           "toppings": Array [
