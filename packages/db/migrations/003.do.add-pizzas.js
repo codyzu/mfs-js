@@ -1,9 +1,11 @@
 function generateSql() {
   return `${insertPizzas()}
 
-${insertToppingTypes}
+${insertToppingTypes()}
 
-${insertToppings()}`;
+${insertToppings()}
+
+${insertPizzaToppings()}`;
 }
 
 const pizzas = [
@@ -53,6 +55,18 @@ function insertToppings() {
       `('${topping}', (SELECT id FROM topping_types WHERE name = '${type}'))`,
   );
   return `INSERT INTO toppings(name, topping_type) VALUES ${values.join(
+    ', ',
+  )};`;
+}
+
+function insertPizzaToppings() {
+  const values = pizzas.flatMap(([name, toppings]) =>
+    toppings.map(
+      ([topping]) =>
+        `((SELECT id FROM pizzas WHERE name = '${name}'), (SELECT id FROM toppings WHERE name = '${topping}'))`,
+    ),
+  );
+  return `INSERT INTO pizzas_toppings(pizza, topping) VALUES ${values.join(
     ', ',
   )};`;
 }
