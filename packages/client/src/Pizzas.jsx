@@ -5,7 +5,7 @@ import {useEffect} from 'react';
 import Pizza from './Pizza';
 
 const pizzasQuery = `query { 
-  getPizzas {
+  pizzaList {
     id
     name
     toppings {
@@ -37,7 +37,7 @@ export default function Pizzas() {
   return (
     <Container>
       <Row>
-        {data.getPizzas.map((pizza) => (
+        {data.pizzaList.map((pizza) => (
           <Col key={pizza.id}>
             <Pizza {...pizza} />
             <Link to={`/pizza/${pizza.id}`}>Details</Link>

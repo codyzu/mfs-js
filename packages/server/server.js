@@ -23,7 +23,7 @@ const typeDefs = `
   type Topping {
     id: Int!
     name: String!
-    type: ToppingType
+    type: ToppingType!
   }
 
   type Pizza {
@@ -33,10 +33,9 @@ const typeDefs = `
   }
 
   type Query {
-    getToppings: [Topping]
-    getPizzas: [Pizza]
-    getPizza(id: Int!): Pizza!
-    add(x: Int, y: Int): Int
+    toppingList: [Topping]!
+    pizzaList: [Pizza]!
+    pizza(id: Int!): Pizza!
   }
 `;
 
@@ -59,10 +58,9 @@ const loaders = {
 
 const resolvers = {
   Query: {
-    getToppings: (_, __, context) => db.getToppings(context.app),
-    getPizzas: (_, __, context) => db.getPizzas(context.app),
-    getPizza: (_, {id}, context) => db.getPizza(context.app, id),
-    add: async (_, {x, y}) => x + y,
+    toppingList: (_, __, context) => db.getToppings(context.app),
+    pizzaList: (_, __, context) => db.getPizzas(context.app),
+    pizza: (_, {id}, context) => db.getPizza(context.app, id),
   },
 };
 

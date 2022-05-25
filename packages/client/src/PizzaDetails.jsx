@@ -4,7 +4,7 @@ import {useParams} from 'react-router-dom';
 import Pizza from './Pizza';
 
 const pizzaQuery = `query($pizzaId: Int!) { 
-  getPizza(id: $pizzaId) {
+  pizza(id: $pizzaId) {
     id
     name
     toppings {
@@ -35,5 +35,5 @@ export default function PizzaDetails() {
     return <span>Loading...</span>;
   }
 
-  return <Pizza {...data.getPizza} />;
+  return <Pizza {...data.pizza} />;
 }
