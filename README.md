@@ -2,6 +2,8 @@
 
 Modern full-stack javascript
 
+![the stack](./stack.png)
+
 This repo serves a POC of my talk on modern full-stack javascript.
 
 ## Setup
