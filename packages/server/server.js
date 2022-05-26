@@ -4,7 +4,10 @@ import * as db from './src/db.js';
 
 const app = fastify({
   logger: {
-    prettyPrint: true,
+    prettyPrint: {
+      translateTime: 'HH:MM:ss Z',
+      ignore: 'pid,hostname',
+    },
   },
 });
 
