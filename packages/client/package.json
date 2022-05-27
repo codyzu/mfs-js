@@ -7,7 +7,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "xo --cwd ../.. packages/client",
-    "format": "cd ../.. && prettier -c packages/client '!**/*.js' '!**/*.jsx'"
+    "format": "cd ../.. && prettier -c packages/client '!**/*.js' '!**/*.jsx'",
+    "test": "vitest run --coverage",
+    "test:watch": "vitest watch --coverage"
   },
   "dependencies": {
     "@urql/devtools": "^2.0.3",
@@ -22,13 +24,19 @@
     "urql": "^2.2.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^14.2.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@vitejs/plugin-react": "^1.3.0",
+    "@vitest/ui": "^0.12.9",
     "eslint-config-xo-react": "^0.27.0",
     "eslint-config-xo-space": "^0.32.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
-    "vite": "^2.9.9"
+    "jsdom": "^19.0.0",
+    "vite": "^2.9.9",
+    "vitest": "^0.12.9"
   }
 }

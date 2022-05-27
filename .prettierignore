@@ -2,3 +2,5 @@ dist
 dist-ssr
 build
 .turbo
+coverage
+tap-snapshots

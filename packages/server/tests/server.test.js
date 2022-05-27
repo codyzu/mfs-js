@@ -1,8 +1,9 @@
-import app from "../server.js";
+import tap from 'tap';
+import app from '../server.js';
 
-afterAll(() => app.close());
+tap.teardown(() => app.close());
 
-test("Gets pizzas", async () => {
+tap.test('Gets pizzas', async () => {
   const query = `query { 
     pizzaList {
       name
@@ -14,58 +15,13 @@ test("Gets pizzas", async () => {
   `;
 
   const response = await app.inject({
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    url: "/graphql",
-    payload: JSON.stringify({ query }),
+    method: 'POST',
+    headers: {'content-type': 'application/json'},
+    url: '/graphql',
+    payload: JSON.stringify({query}),
   });
 
-  const { data, errors } = await response.json();
-  expect(errors).toBeUndefined();
-  expect(data).toMatchInlineSnapshot(`
-    Object {
-      "pizzaList": Array [
-        Object {
-          "name": "Napolitaine",
-          "toppings": Array [
-            Object {
-              "name": "tomato sauce",
-            },
-            Object {
-              "name": "mozzarella",
-            },
-            Object {
-              "name": "fresh garlic",
-            },
-            Object {
-              "name": "olives",
-            },
-            Object {
-              "name": "anchovies",
-            },
-          ],
-        },
-        Object {
-          "name": "Reine",
-          "toppings": Array [
-            Object {
-              "name": "tomato sauce",
-            },
-            Object {
-              "name": "mozzarella",
-            },
-            Object {
-              "name": "mushrooms",
-            },
-            Object {
-              "name": "ham",
-            },
-            Object {
-              "name": "olives",
-            },
-          ],
-        },
-      ],
-    }
-  `);
+  const {data, errors} = await response.json();
+  tap.notOk(errors);
+  tap.matchSnapshot(data);
 });

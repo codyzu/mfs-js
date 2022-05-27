@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
-    "test:watch": "npm run test --watch",
+    "test": "c8 --all tap --no-cov",
+    "test:watch": "nodemon -x 'npm run test'",
     "start": "node index.js",
     "dev": "GOOGLE_APPLICATION_CREDENTIALS=./dev-cody.service-account.json nodemon index.js",
     "lint": "xo --cwd ../.. packages/server",
     "lint:fix": "xo --fix --cwd ../.. packages/server",
-    "format": "prettier -c . '!**/*.js'"
+    "format": "cd ../.. && prettier -c packages/server '!**/*.js'"
   },
   "type": "module",
   "author": "",
@@ -28,7 +28,8 @@
     "pino-pretty": "^7.6.1"
   },
   "devDependencies": {
-    "jest": "^28.1.0",
-    "nodemon": "^2.0.16"
+    "c8": "^7.11.3",
+    "nodemon": "^2.0.16",
+    "tap": "^16.2.0"
   }
 }

@@ -1,6 +1,7 @@
 module.exports = {
   prettier: true,
   space: true,
+  ignores: ['tap-snapshots'],
   overrides: [
     {
       files: "packages/client/**/*.jsx",
