@@ -8,15 +8,18 @@ import {
   ListGroupItem,
 } from 'reactstrap';
 
-export default function Pizza({name, toppings}) {
+export default function Pizza({name, toppings, image}) {
   return (
     <Card>
-      <CardImg
-        top
-        alt="pizza"
-        src="https://storage.googleapis.com/mfs-js/uploads/pizza1.jpg"
-        width="100%"
-      />
+      <div className="ratio ratio-16x9">
+        <CardImg
+          top
+          alt="pizza"
+          src={image}
+          className="img-fluid"
+          style={{objectFit: 'cover'}}
+        />
+      </div>
       <CardBody>
         <CardTitle tag="h5">{name}</CardTitle>
       </CardBody>
@@ -31,6 +34,7 @@ export default function Pizza({name, toppings}) {
 
 Pizza.propTypes = {
   name: PropTypes.string.isRequired,
+  image: PropTypes.string,
   toppings: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,

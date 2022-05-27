@@ -1,4 +1,8 @@
-CREATE TABLE pizzas(id SERIAL PRIMARY KEY, name VARCHAR (50) NOT NULL);
+CREATE TABLE pizzas(
+  id SERIAL PRIMARY KEY,
+  name VARCHAR (50) NOT NULL,
+  image TEXT
+);
 
 CREATE TABLE pizzas_toppings(
   pizza INTEGER REFERENCES pizzas(id),

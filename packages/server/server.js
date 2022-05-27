@@ -1,3 +1,5 @@
+import * as url from 'node:url';
+import * as path from 'node:path';
 import fastify from 'fastify';
 import {makeExecutableSchema} from '@graphql-tools/schema';
 import * as db from './src/db.js';
@@ -12,6 +14,12 @@ const app = fastify({
 });
 
 app.register(import('@fastify/cors'));
+
+const dirname = url.fileURLToPath(new URL('.', import.meta.url));
+app.register(import('@fastify/static'), {
+  root: path.resolve(dirname, 'public'),
+  prefix: '/public/',
+});
 
 app.register(import('@fastify/postgres'), {
   connectionString: 'postgres://postgres:postgres@localhost:5433/postgres',
@@ -32,6 +40,7 @@ const typeDefs = `
   type Pizza {
     id: Int!
     name: String!
+    image: String
     toppings: [Topping]!
   }
 

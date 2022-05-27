@@ -7,6 +7,7 @@ const pizzaQuery = `query($pizzaId: Int!) {
   pizza(id: $pizzaId) {
     id
     name
+    image
     toppings {
       id
       name

@@ -8,6 +8,7 @@ const pizzasQuery = `query {
   pizzaList {
     id
     name
+    image
     toppings {
       id
       name
