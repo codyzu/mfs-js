@@ -8,6 +8,9 @@ export default defineConfig({
     proxy: {
       '/public': 'http://localhost:3001',
     },
+    watch: {
+      ignored: [/coverage/],
+    },
   },
   test: {
     globals: true,

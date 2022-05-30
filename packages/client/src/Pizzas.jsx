@@ -21,10 +21,6 @@ export default function Pizzas() {
     query: pizzasQuery,
   });
 
-  useEffect(() => {
-    console.log(result);
-  }, [result]);
-
   const {data, fetching, error} = result;
 
   if (error) {
