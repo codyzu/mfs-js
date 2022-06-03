@@ -11,6 +11,7 @@ const pizzaQuery = `query($pizzaId: Int!) {
     toppings {
       id
       name
+      type
     }
   }
 }`;

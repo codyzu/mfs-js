@@ -1,7 +1,6 @@
 import {useQuery} from 'urql';
 import {Container, Row, Col} from 'reactstrap';
 import {Link} from 'react-router-dom';
-import {useEffect} from 'react';
 import Pizza from './Pizza';
 
 const pizzasQuery = `query { 
@@ -12,6 +11,7 @@ const pizzasQuery = `query {
     toppings {
       id
       name
+      type 
     }
   }
 }`;
@@ -35,9 +35,10 @@ export default function Pizzas() {
     <Container>
       <Row>
         {data.pizzaList.map((pizza) => (
-          <Col key={pizza.id}>
-            <Pizza {...pizza} />
-            <Link to={`/pizza/${pizza.id}`}>Details</Link>
+          <Col key={pizza.id} xs={12} lg={6} xl={4}>
+            <Link to={`/pizza/${pizza.id}`} className="text-decoration-none">
+              <Pizza {...pizza} />
+            </Link>
           </Col>
         ))}
       </Row>

@@ -7,6 +7,10 @@ import {
   ListGroup,
   ListGroupItem,
 } from 'reactstrap';
+import Cheese from './cheese.svg';
+import Sauce from './soup-ladle.svg';
+import Meat from './salami.svg';
+import Vegetable from './vegetables.svg';
 
 export default function Pizza({name, toppings, image}) {
   return (
@@ -25,11 +29,40 @@ export default function Pizza({name, toppings, image}) {
       </CardBody>
       <ListGroup flush>
         {toppings.map((topping) => (
-          <ListGroupItem key={topping.id}>{topping.name}</ListGroupItem>
+          <ListGroupItem key={topping.id} className="h5">
+            <Icon
+              type={topping.type}
+              width="1.25em"
+              fill="currentColor"
+              className="me-2"
+            />
+            {topping.name}
+          </ListGroupItem>
         ))}
       </ListGroup>
     </Card>
   );
+}
+
+// eslint-disable-next-line react/prop-types
+function Icon({type, ...rest}) {
+  if (type === 'cheese') {
+    return <Cheese {...rest} />;
+  }
+
+  if (type === 'meat') {
+    return <Meat {...rest} />;
+  }
+
+  if (type === 'sauce') {
+    return <Sauce {...rest} />;
+  }
+
+  if (type === 'vegetable') {
+    return <Vegetable {...rest} />;
+  }
+
+  return null;
 }
 
 Pizza.propTypes = {

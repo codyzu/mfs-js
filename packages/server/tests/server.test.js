@@ -9,6 +9,7 @@ tap.test('Gets pizzas', async () => {
       name
       toppings {
         name
+        type
       }
     }
   }

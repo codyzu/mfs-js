@@ -26,15 +26,10 @@ app.register(import('@fastify/postgres'), {
 });
 
 const typeDefs = `
-  type ToppingType {
-    id: Int!
-    name: String!
-  }
-
   type Topping {
     id: Int!
     name: String!
-    type: ToppingType!
+    type: String!
   }
 
   type Pizza {
@@ -52,13 +47,6 @@ const typeDefs = `
 `;
 
 const loaders = {
-  Topping: {
-    type: (queries, context) =>
-      db.getToppingTypesForToppings(
-        queries.map((q) => q.obj),
-        context.app,
-      ),
-  },
   Pizza: {
     toppings: (queries, context) =>
       db.getToppingsForPizzas(

@@ -37,6 +37,7 @@
     "eslint-plugin-react-hooks": "^4.5.0",
     "jsdom": "^19.0.0",
     "vite": "^2.9.9",
+    "vite-plugin-svgr": "^2.1.0",
     "vitest": "^0.12.9"
   }
 }

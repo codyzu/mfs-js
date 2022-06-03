@@ -13,18 +13,23 @@ Object {
       "toppings": Array [
         Object {
           "name": "tomato sauce",
+          "type": "sauce",
         },
         Object {
           "name": "mozzarella",
+          "type": "cheese",
         },
         Object {
           "name": "fresh garlic",
+          "type": "vegetable",
         },
         Object {
           "name": "olives",
+          "type": "vegetable",
         },
         Object {
           "name": "anchovies",
+          "type": "meat",
         },
       ],
     },
@@ -33,18 +38,23 @@ Object {
       "toppings": Array [
         Object {
           "name": "tomato sauce",
+          "type": "sauce",
         },
         Object {
           "name": "mozzarella",
+          "type": "cheese",
         },
         Object {
           "name": "mushrooms",
+          "type": "vegetable",
         },
         Object {
           "name": "ham",
+          "type": "meat",
         },
         Object {
           "name": "olives",
+          "type": "vegetable",
         },
       ],
     },
