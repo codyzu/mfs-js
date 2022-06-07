@@ -5,16 +5,14 @@ import {makeExecutableSchema} from '@graphql-tools/schema';
 import connectionString from '../db/connection-string.js';
 import frontEndRoutePaths from '../client/src/route-paths.js';
 import * as db from './src/db.js';
-import dev from './src/dev.js';
 
 const app = fastify({
   logger: {
-    prettyPrint: dev
-      ? {
-          translateTime: 'HH:MM:ss Z',
-          ignore: 'pid,hostname',
-        }
-      : false,
+    prettyPrint: {
+      translateTime: 'HH:MM:ss Z',
+      ignore: 'pid,hostname',
+      singleLine: true,
+    },
   },
 });
 
