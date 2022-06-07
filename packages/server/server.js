@@ -12,6 +12,7 @@ const app = fastify({
       translateTime: 'HH:MM:ss Z',
       ignore: 'pid,hostname',
       singleLine: true,
+      colorize: true,
     },
   },
 });
