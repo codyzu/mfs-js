@@ -7,6 +7,7 @@ import CreatePizza from './CreatePizza';
 import Navigation from './Navigation';
 import PizzaDetails from './PizzaDetails';
 import Menu from './Menu';
+import routePaths from './route-paths';
 
 const client = createClient({
   url: '/graphql',
@@ -30,10 +31,10 @@ function App() {
     <Provider value={client}>
       <Navigation />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/pizzas" element={<Menu />} />
-        <Route path="/create" element={<CreatePizza />} />
-        <Route path="/pizzas/:pizzaId" element={<PizzaDetails />} />
+        <Route path={routePaths.home} element={<Home />} />
+        <Route path={routePaths.pizzas} element={<Menu />} />
+        <Route path={routePaths.create} element={<CreatePizza />} />
+        <Route path={routePaths.pizza} element={<PizzaDetails />} />
       </Routes>
     </Provider>
   );
