@@ -16,7 +16,7 @@ const client = createClient({
     cacheExchange({
       resolvers: {
         Query: {
-          getPizza(_, args) {
+          pizza(_, args) {
             return {__typename: 'Pizza', id: args.id};
           },
         },
