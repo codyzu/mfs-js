@@ -7,7 +7,8 @@ export default defineConfig({
   plugins: [react(), svg({exportAsDefault: true})],
   server: {
     proxy: {
-      '/public': 'http://localhost:3001',
+      '/graphql': 'http://localhost:3001',
+      '/graphiql': 'http://localhost:3001',
     },
     watch: {
       ignored: [/coverage/],

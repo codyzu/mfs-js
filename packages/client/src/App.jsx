@@ -9,7 +9,7 @@ import PizzaDetails from './PizzaDetails';
 import Menu from './Menu';
 
 const client = createClient({
-  url: 'http://localhost:3001/graphql',
+  url: '/graphql',
   exchanges: [].concat(import.meta.env.DEV ? [devtoolsExchange] : [], [
     dedupExchange,
     cacheExchange({
