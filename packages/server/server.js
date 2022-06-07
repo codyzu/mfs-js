@@ -24,6 +24,7 @@ app.register(import('@fastify/cors'));
 const dirname = url.fileURLToPath(new URL('.', import.meta.url));
 app.register(import('@fastify/static'), {
   root: path.resolve(dirname, '../client/dist'),
+  maxAge: '30d',
 });
 
 // Serve the index for each route path in the front-end
