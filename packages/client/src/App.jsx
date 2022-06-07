@@ -1,12 +1,12 @@
 import {createClient, Provider, dedupExchange, fetchExchange} from 'urql';
 import {cacheExchange} from '@urql/exchange-graphcache';
 import {devtoolsExchange} from '@urql/devtools';
-import {Container} from 'reactstrap';
 import {Routes, Route} from 'react-router-dom';
 import Home from './Home';
 import CreatePizza from './CreatePizza';
 import Navigation from './Navigation';
 import PizzaDetails from './PizzaDetails';
+import Menu from './Menu';
 
 const client = createClient({
   url: 'http://localhost:3001/graphql',
@@ -29,13 +29,12 @@ function App() {
   return (
     <Provider value={client}>
       <Navigation />
-      <Container>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/create" element={<CreatePizza />} />
-          <Route path="/pizza/:pizzaId" element={<PizzaDetails />} />
-        </Routes>
-      </Container>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pizzas" element={<Menu />} />
+        <Route path="/create" element={<CreatePizza />} />
+        <Route path="/pizzas/:pizzaId" element={<PizzaDetails />} />
+      </Routes>
     </Provider>
   );
 }

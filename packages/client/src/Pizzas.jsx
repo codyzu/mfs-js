@@ -36,7 +36,7 @@ export default function Pizzas() {
       <Row>
         {data.pizzaList.map((pizza) => (
           <Col key={pizza.id} xs={12} lg={6} xl={4}>
-            <Link to={`/pizza/${pizza.id}`} className="text-decoration-none">
+            <Link to={`/pizzas/${pizza.id}`} className="text-decoration-none">
               <Pizza {...pizza} />
             </Link>
           </Col>

@@ -1,6 +1,7 @@
 import {useEffect} from 'react';
 import {useQuery} from 'urql';
 import {useParams} from 'react-router-dom';
+import {Container} from 'reactstrap';
 import Pizza from './Pizza';
 
 const pizzaQuery = `query($pizzaId: Int!) { 
@@ -37,5 +38,9 @@ export default function PizzaDetails() {
     return <span>Loading...</span>;
   }
 
-  return <Pizza {...data.pizza} />;
+  return (
+    <Container className="my-2">
+      <Pizza {...data.pizza} />
+    </Container>
+  );
 }
