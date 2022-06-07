@@ -2,6 +2,7 @@ import * as url from 'node:url';
 import * as path from 'node:path';
 import fastify from 'fastify';
 import {makeExecutableSchema} from '@graphql-tools/schema';
+import connectionString from '../db/connection-string.js';
 import * as db from './src/db.js';
 import dev from './src/dev.js';
 
@@ -24,7 +25,7 @@ app.register(import('@fastify/static'), {
 });
 
 app.register(import('@fastify/postgres'), {
-  connectionString: 'postgres://postgres:postgres@localhost:5433/postgres',
+  connectionString,
 });
 
 const typeDefs = `
