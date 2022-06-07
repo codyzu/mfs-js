@@ -24,12 +24,12 @@
     "fastify": "^3.29.0",
     "graphql": "^16.4.0",
     "mercurius": "^9.5.0",
-    "mercurius-cache": "^1.7.1"
+    "mercurius-cache": "^1.7.1",
+    "pino-pretty": "^7.6.1"
   },
   "devDependencies": {
     "c8": "^7.11.3",
     "nodemon": "^2.0.16",
-    "pino-pretty": "^7.6.1",
     "tap": "^16.2.0"
   }
 }
