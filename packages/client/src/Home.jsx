@@ -9,7 +9,7 @@ function Home() {
         className="vw-100 vh-100 overflow-hidden text-center d-flex justify-content-center"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/public/pizza1.jpg")',
+            'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/images/pizza1.jpg")',
           backgroundPosition: 'center',
           backgroundSize: 'cover',
         }}
@@ -50,7 +50,7 @@ function Home() {
           <Col lg={4} className="offset-lg-1 p-0 overflow-hidden shadow-lg">
             <img
               className={classes['rounded-lg-3']}
-              src="/public/pizza2.jpg"
+              src="/images/pizza2.jpg"
               alt=""
               width="720"
             />

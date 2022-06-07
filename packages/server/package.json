@@ -7,7 +7,7 @@
     "test": "c8 --all tap --no-cov",
     "test:watch": "nodemon -x 'npm run test'",
     "start": "node index.js",
-    "dev": "GOOGLE_APPLICATION_CREDENTIALS=./dev-cody.service-account.json nodemon index.js",
+    "dev": "nodemon index.js --dev",
     "lint": "xo --cwd ../.. packages/server",
     "lint:fix": "xo --fix --cwd ../.. packages/server",
     "format": "cd ../.. && prettier -c packages/server '!**/*.js'"
@@ -19,18 +19,17 @@
     "@fastify/cors": "^7.0.0",
     "@fastify/postgres": "^4.0.1",
     "@fastify/static": "^5.0.2",
-    "@google-cloud/storage": "^5.20.5",
     "@graphql-tools/schema": "^8.3.11",
     "@nearform/sql": "^1.9.2",
     "fastify": "^3.29.0",
     "graphql": "^16.4.0",
     "mercurius": "^9.5.0",
-    "mercurius-cache": "^1.7.1",
-    "pino-pretty": "^7.6.1"
+    "mercurius-cache": "^1.7.1"
   },
   "devDependencies": {
     "c8": "^7.11.3",
     "nodemon": "^2.0.16",
+    "pino-pretty": "^7.6.1",
     "tap": "^16.2.0"
   }
 }

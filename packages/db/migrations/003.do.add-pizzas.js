@@ -18,7 +18,7 @@ const pizzas = [
       ['olives', 'vegetable'],
       ['anchovies', 'meat'],
     ],
-    '/public/pizza1.jpg',
+    '/images/pizza1.jpg',
   ],
   [
     'Reine',
@@ -29,7 +29,7 @@ const pizzas = [
       ['ham', 'meat'],
       ['olives', 'vegetable'],
     ],
-    '/public/pizza2.jpg',
+    '/images/pizza2.jpg',
   ],
 ];
 

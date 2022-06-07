@@ -3,13 +3,16 @@ import * as path from 'node:path';
 import fastify from 'fastify';
 import {makeExecutableSchema} from '@graphql-tools/schema';
 import * as db from './src/db.js';
+import dev from './src/dev.js';
 
 const app = fastify({
   logger: {
-    prettyPrint: {
-      translateTime: 'HH:MM:ss Z',
-      ignore: 'pid,hostname',
-    },
+    prettyPrint: dev
+      ? {
+          translateTime: 'HH:MM:ss Z',
+          ignore: 'pid,hostname',
+        }
+      : false,
   },
 });
 
@@ -17,8 +20,7 @@ app.register(import('@fastify/cors'));
 
 const dirname = url.fileURLToPath(new URL('.', import.meta.url));
 app.register(import('@fastify/static'), {
-  root: path.resolve(dirname, 'public'),
-  prefix: '/public/',
+  root: path.resolve(dirname, '../client/dist'),
 });
 
 app.register(import('@fastify/postgres'), {
@@ -73,11 +75,6 @@ app.register(import('mercurius'), {
 app.register(import('mercurius-cache'), {
   ttl: 10,
   all: true,
-});
-
-app.get('/', async (request, reply) => {
-  const query = '{ add(x: 2, y: 2) }';
-  return reply.graphql(query);
 });
 
 // Hello world
