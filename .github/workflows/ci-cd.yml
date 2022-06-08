@@ -73,6 +73,14 @@ jobs:
         # env:
         #   DATABASE_URL: postgres://postgres:postgres@postgres:5433/postgres
 
+      - name: Debug
+        # if: context.event === 'push'
+        run: |
+          heroku logs -a $HEROKU_APP_NAME
+        env:
+          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+
       - name: Deploy
         # if: context.event === 'push'
         run: |
