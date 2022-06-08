@@ -60,7 +60,7 @@ jobs:
         run: npm run test
 
       - name: Setup Heroku
-        if: github.event_name == 'push' && github.github.ref_name == 'main'
+        if: github.event_name == 'push' && github.ref_name == 'main'
         run: |
           cat > ~/.netrc <<EOF
             machine api.heroku.com
@@ -77,7 +77,7 @@ jobs:
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
 
       - name: Deploy to Heroku
-        if: github.event_name == 'push' && github.github.ref_name == 'main'
+        if: github.event_name == 'push' && github.ref_name == 'main'
         run: |
           git push -f heroku main
         env:
@@ -85,12 +85,13 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
 
       - name: Migrate production db
-        if: github.event_name == 'push' && github.github.ref_name == 'main'
+        if: github.event_name == 'push' && github.ref_name == 'main'
         run: DATABASE_URL=`heroku config:get -a $HEROKU_APP_NAME DATABASE_URL` echo ${DATABASE_URL} && npm run db:migrate
         env:
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
 
       - name: Clean Heroku credentials
-        if: github.event_name == 'push' && github.github.ref_name == 'main' && always()
+        # Always clean, even on failures
+        if: github.event_name == 'push' && github.ref_name == 'main' && always()
         run: rm ~/.netrc
