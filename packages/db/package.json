@@ -8,7 +8,9 @@
     "migrate": "postgrator",
     "down": "docker-compose down",
     "format": "prettier -c . '!**/*.js'",
-    "format:fix": "prettier -w . '!*.js'"
+    "format:fix": "prettier -w . '!*.js'",
+    "lint": "xo --cwd ../.. packages/db 'packages/db/**/.*.js'",
+    "lint:fix": "xo --fix --cwd ../.. packages/db 'packages/db/**/.*.js'"
   },
   "author": "",
   "license": "ISC",

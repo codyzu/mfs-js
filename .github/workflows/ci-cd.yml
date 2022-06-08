@@ -1,8 +1,6 @@
 name: "CI/CD"
 on:
   pull_request:
-    # Basically anytime a PR is created, pushed to, or the base changes, then run the workflow
-    # https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request
     types: [opened, synchronize, reopen]
 
   push:
@@ -14,21 +12,14 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-# env:
-#   # Use colors anywhere chalk.js is used (jest, etc...)
-#   FORCE_COLOR: "2"
-
 jobs:
-  integration-checks:
-    # Operating System
+  ci-cd:
     runs-on: ubuntu-latest
 
     services:
-      # Label used to access the service container
+      # Setup postgres for the tests
       postgres:
-        # Docker Hub image
         image: postgres:alpine
-        # Provide the password for postgres
         env:
           POSTGRES_PASSWORD: postgres
         # Set health checks to wait until postgres has started
@@ -41,20 +32,17 @@ jobs:
         ports:
           - "5433:5432"
 
-    # Job steps
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
+          # Need full checkout in order to push to heroku
           fetch-depth: 0
 
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: "npm"
-        # env:
-        #   # If npm outputs the cache path in color, it breaks actions/cache which is used under the hood
-        #   FORCE_COLOR: "0"
 
       - name: Output debugging info
         run: node -v && npm -v
@@ -62,28 +50,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Lint, Format
+      - name: Format and lint
         run: npm run lint:all
 
-      - name: Migrate DB
-        run: echo $DATABASE_URL && npm run db:migrate
-        # env:
-        #   DATABASE_URL: postgres://postgres:postgres@postgres:5433/postgres
+      - name: Migrate local db
+        run: npm run db:migrate
 
       - name: Test
         run: npm run test
-        # env:
-        #   DATABASE_URL: postgres://postgres:postgres@postgres:5433/postgres
 
-      - name: Debug
-        # if: context.event === 'push'
-        run: |
-          heroku logs -a $HEROKU_APP_NAME
-        env:
-          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-
-      - name: Heroku login credentials
+      - name: Setup Heroku
+        if: github.event_name == 'push' && github.github.ref_name == 'main'
         run: |
           cat > ~/.netrc <<EOF
             machine api.heroku.com
@@ -93,26 +70,28 @@ jobs:
               login $HEROKU_EMAIL
               password $HEROKU_API_KEY
           EOF
+          heroku git:remote -a $HEROKU_APP_NAME
+          git fetch heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
 
-      - name: Deploy
-        # if: context.event === 'push'
+      - name: Deploy to Heroku
+        if: github.event_name == 'push' && github.github.ref_name == 'main'
         run: |
-          heroku git:remote -a $HEROKU_APP_NAME
-          git fetch heroku
           git push -f heroku main
         env:
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
 
-      - name: Migrate DB
+      - name: Migrate production db
+        if: github.event_name == 'push' && github.github.ref_name == 'main'
         run: DATABASE_URL=`heroku config:get -a $HEROKU_APP_NAME DATABASE_URL` echo ${DATABASE_URL} && npm run db:migrate
         env:
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
 
       - name: Clean Heroku credentials
+        if: github.event_name == 'push' && github.github.ref_name == 'main'
         if: always()
         run: rm ~/.netrc
