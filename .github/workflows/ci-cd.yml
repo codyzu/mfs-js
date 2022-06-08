@@ -61,7 +61,7 @@ jobs:
         run: npm ci
 
       - name: Lint, Format
-        run: npm run lint
+        run: npm run lint:all
 
       - name: Migrate DB
         run: echo $DATABASE_URL && npm run db:migrate
@@ -72,3 +72,18 @@ jobs:
         run: npm run test
         # env:
         #   DATABASE_URL: postgres://postgres:postgres@postgres:5433/postgres
+
+      - name: Deploy
+        # if: context.event === 'push'
+        run: |
+          heroku git:remote -a $HEROKU_APP_NAME
+          git push heroku
+        env:
+          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+
+      - name: Migrate DB
+        run: DATABASE_URL=`heroku config:get -a $HEROKU_APP_NAME DATABASE_URL` echo ${DATABASE_URL} && npm run db:migrate
+        env:
+          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
