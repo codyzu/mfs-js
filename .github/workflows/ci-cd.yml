@@ -64,11 +64,11 @@ jobs:
         run: npm run lint
 
       - name: Migrate DB
-        run: npm run db:migrate
-        env:
-          DATABASE_URL: postgres://postgres:postgres@postgres:5433/postgres
+        run: echo $DATABASE_URL && npm run db:migrate
+        # env:
+        #   DATABASE_URL: postgres://postgres:postgres@postgres:5433/postgres
 
       - name: Test
         run: npm run test
-        env:
-          DATABASE_URL: postgres://postgres:postgres@postgres:5433/postgres
+        # env:
+        #   DATABASE_URL: postgres://postgres:postgres@postgres:5433/postgres
