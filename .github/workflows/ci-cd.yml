@@ -81,6 +81,20 @@ jobs:
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
 
+      - name: Heroku login credentials
+        run: |
+          cat > ~/.netrc <<EOF
+            machine api.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+            machine git.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+          EOF
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+
       - name: Deploy
         # if: context.event === 'push'
         run: |
@@ -95,3 +109,7 @@ jobs:
         env:
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+
+      - name: Clean Heroku credentials
+        if: always()
+        run: rm ~/.netrc
