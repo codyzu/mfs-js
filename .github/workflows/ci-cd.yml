@@ -73,6 +73,7 @@ jobs:
           heroku git:remote -a $HEROKU_APP_NAME
           git fetch heroku
         env:
+          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
 
@@ -82,14 +83,12 @@ jobs:
           git push -f heroku main
         env:
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
 
       - name: Migrate production db
         if: github.event_name == 'push' && github.ref_name == 'main'
         run: DATABASE_URL=`heroku config:get -a $HEROKU_APP_NAME DATABASE_URL` echo ${DATABASE_URL} && npm run db:migrate
         env:
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
 
       - name: Clean Heroku credentials
         # Always clean, even on failures
