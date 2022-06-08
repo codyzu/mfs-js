@@ -92,6 +92,5 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
 
       - name: Clean Heroku credentials
-        if: github.event_name == 'push' && github.github.ref_name == 'main'
-        if: always()
+        if: github.event_name == 'push' && github.github.ref_name == 'main' && always()
         run: rm ~/.netrc
