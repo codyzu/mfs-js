@@ -17,7 +17,7 @@ const pizzasQuery = `query {
 }`;
 
 export default function Pizzas() {
-  const [result, reexecuteQuery] = useQuery({
+  const [result] = useQuery({
     query: pizzasQuery,
   });
 

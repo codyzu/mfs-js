@@ -19,7 +19,7 @@ const pizzaQuery = `query($pizzaId: Int!) {
 
 export default function PizzaDetails() {
   const {pizzaId} = useParams();
-  const [result, reexecuteQuery] = useQuery({
+  const [result] = useQuery({
     query: pizzaQuery,
     variables: {pizzaId: Number.parseInt(pizzaId, 10)},
   });

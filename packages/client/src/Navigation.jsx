@@ -2,16 +2,10 @@ import {
   Navbar,
   NavbarBrand,
   NavbarToggler,
-  Container,
   Collapse,
   Nav,
   NavItem,
   NavLink,
-  NavbarText,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
 } from 'reactstrap';
 import {Link, NavLink as RRNavLink} from 'react-router-dom';
 import {useState} from 'react';
@@ -45,23 +39,9 @@ export default function Navigation() {
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="https://github.com/reactstrap/reactstrap">
-              GitHub
-            </NavLink>
+            <NavLink href="https://github.com/codyzu/mfs-js">GitHub</NavLink>
           </NavItem>
-          {/* <UncontrolledDropdown inNavbar nav>
-            <DropdownToggle caret nav>
-              Options
-            </DropdownToggle>
-            <DropdownMenu right>
-              <DropdownItem>Option 1</DropdownItem>
-              <DropdownItem>Option 2</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Reset</DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown> */}
         </Nav>
-        {/* <NavbarText>Simple Text</NavbarText> */}
       </Collapse>
     </Navbar>
   );
