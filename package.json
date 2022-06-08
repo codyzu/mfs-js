@@ -17,7 +17,7 @@
     "db:down": "npm run -w mfs-db down",
     "db:migrate": "npm run -w mfs-db migrate",
     "build": "turbo run build",
-    "start": "npm run -w mfs-server start",
+    "start": "npm run -w mfs-server start"
   },
   "author": "",
   "license": "ISC",
