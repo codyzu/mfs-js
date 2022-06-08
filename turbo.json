@@ -22,11 +22,29 @@
       ],
       "outputs": []
     },
+    "//#lint": {
+      "outputs": []
+    },
     "format": {
+      "outputs": []
+    },
+    "//#format": {
       "outputs": []
     },
     "dev": {
       "cache": false
+    },
+    "deploy": {
+      "dependsOn": [
+        "lint",
+        "test",
+        "build"
+      ],
+      "outputs": [],
+      "cache": false
+    },
+    "//deploy": {
+      "outputs": []
     }
   }
 }

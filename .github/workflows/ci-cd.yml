@@ -1,0 +1,49 @@
+name: "CI/CD"
+on:
+  pull_request:
+    # Basically anytime a PR is created, pushed to, or the base changes, then run the workflow
+    # https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request
+    types: [opened, synchronize, reopen]
+
+  push:
+    branches:
+      - main
+
+# Cancel any previous CI runs for this branch or PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Use colors anywhere chalk.js is used (jest, etc...)
+  # FORCE_COLOR: "2"
+
+jobs:
+  integration-checks:
+    # Operating System
+    runs-on: ubuntu-latest
+
+    # Job steps
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
+        # env:
+        #   # If npm outputs the cache path in color, it breaks actions/cache which is used under the hood
+        #   FORCE_COLOR: "0"
+
+      - name: Output debugging info
+        run: node -v && node -v
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint, Format
+        run: npm run lint
+        
+      - name: Test
+        run: npm run test
