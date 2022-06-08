@@ -44,6 +44,12 @@ jobs:
 
       - name: Lint, Format
         run: npm run lint
-        
+
+      - name: Start DB
+        run: docker-compose -f packages/db/docker-compose.yml up -d
+
+      - name: Migrate DB
+        run: npm run db:migrate
+
       - name: Test
         run: npm run test
