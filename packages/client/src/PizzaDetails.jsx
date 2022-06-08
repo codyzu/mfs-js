@@ -3,6 +3,7 @@ import {useQuery} from 'urql';
 import {useParams} from 'react-router-dom';
 import {Container} from 'reactstrap';
 import Pizza from './Pizza';
+import Loading from './Loading';
 
 const pizzaQuery = `query($pizzaId: Int!) { 
   pizza(id: $pizzaId) {
@@ -35,7 +36,7 @@ export default function PizzaDetails() {
   }
 
   if (fetching) {
-    return <span>Loading...</span>;
+    return <Loading />;
   }
 
   return (

@@ -2,6 +2,7 @@ import {useQuery} from 'urql';
 import {Container, Row, Col} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import Pizza from './Pizza';
+import Loading from './Loading';
 
 const pizzasQuery = `query { 
   pizzaList {
@@ -28,7 +29,7 @@ export default function Pizzas() {
   }
 
   if (fetching) {
-    return <span>Loading...</span>;
+    return <Loading />;
   }
 
   return (
