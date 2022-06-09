@@ -14,7 +14,7 @@ function Home() {
           backgroundSize: 'cover',
         }}
       >
-        <h1 className="align-self-center display-4 fw-bold text-secondary">
+        <h1 className="align-self-center display-4 fw-bold text-white">
           Pizza is awesome.
         </h1>
       </div>
@@ -42,9 +42,6 @@ function Home() {
               >
                 Menu
               </Button>
-              {/* <Button color="secondary" size="lg" className="px-4">
-                Default
-              </Button> */}
             </div>
           </Col>
           <Col lg={4} className="offset-lg-1 p-0 overflow-hidden shadow-lg">

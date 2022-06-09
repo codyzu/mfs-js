@@ -1,8 +1,7 @@
 import {useQuery} from 'urql';
 import {Container, Row, Col} from 'reactstrap';
-import {Link} from 'react-router-dom';
-import Pizza from './Pizza';
 import Loading from './Loading';
+import PizzaOverview from './PizzaOverview';
 
 const pizzasQuery = `query { 
   pizzaList {
@@ -33,15 +32,24 @@ export default function Pizzas() {
   }
 
   return (
-    <Container>
+    <Container className="px-4">
       <Row>
-        {data.pizzaList.map((pizza) => (
-          <Col key={pizza.id} xs={12} lg={6} xl={4}>
-            <Link to={`/pizzas/${pizza.id}`} className="text-decoration-none">
-              <Pizza {...pizza} />
-            </Link>
-          </Col>
-        ))}
+        <Col>
+          <h1 className="display-3">Menu</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Container className="px-0">
+            {data.pizzaList.map((pizza) => (
+              <PizzaOverview
+                key={pizza.id}
+                {...pizza}
+                description="Take a voyage to the center of Italy where the combination of fresh basil and mozerella make for a mouth watering delight!"
+              />
+            ))}
+          </Container>
+        </Col>
       </Row>
     </Container>
   );

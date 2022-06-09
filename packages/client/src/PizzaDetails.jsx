@@ -1,4 +1,3 @@
-import {useEffect} from 'react';
 import {useQuery} from 'urql';
 import {useParams} from 'react-router-dom';
 import {Container} from 'reactstrap';
@@ -24,10 +23,6 @@ export default function PizzaDetails() {
     query: pizzaQuery,
     variables: {pizzaId: Number.parseInt(pizzaId, 10)},
   });
-
-  useEffect(() => {
-    console.log(result);
-  }, [result]);
 
   const {data, fetching, error} = result;
 

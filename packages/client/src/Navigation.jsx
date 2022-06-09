@@ -9,6 +9,7 @@ import {
 } from 'reactstrap';
 import {Link, NavLink as RRNavLink} from 'react-router-dom';
 import {useState} from 'react';
+import {BsGithub} from 'react-icons/bs';
 import Slice from './favicon.svg';
 
 export default function Navigation() {
@@ -39,7 +40,9 @@ export default function Navigation() {
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="https://github.com/codyzu/mfs-js">GitHub</NavLink>
+            <NavLink href="https://github.com/codyzu/mfs-js">
+              <BsGithub size="1.5em" className="me-1" />
+            </NavLink>
           </NavItem>
         </Nav>
       </Collapse>
