@@ -61,6 +61,7 @@ jobs:
 
       - name: Setup Heroku
         if: github.event_name == 'push' && github.ref_name == 'main'
+        # https://remarkablemark.org/blog/2021/03/12/github-actions-deploy-to-heroku/#heroku-login
         run: |
           cat > ~/.netrc <<EOF
             machine api.heroku.com
