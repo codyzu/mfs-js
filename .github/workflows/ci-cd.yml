@@ -51,13 +51,16 @@ jobs:
         run: npm ci
 
       - name: Format and lint
-        run: npm run lint:all
+        run: npm run format:all && npm run lint:all
 
       - name: Migrate local db
         run: npm run db:migrate
 
       - name: Test
         run: npm run test
+
+      - name: Build
+        run: npm run build
 
       - name: Setup Heroku
         if: github.event_name == 'push' && github.ref_name == 'main'

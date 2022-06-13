@@ -16,7 +16,7 @@
     "db:up": "npm run -w mfs-db up",
     "db:down": "npm run -w mfs-db down",
     "db:migrate": "npm run -w mfs-db migrate",
-    "build": "turbo run build",
+    "build": "FORCE_COLOR=2 turbo run build",
     "start": "npm run -w mfs-server start"
   },
   "author": "",
