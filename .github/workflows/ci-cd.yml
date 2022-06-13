@@ -107,6 +107,8 @@ jobs:
         run: echo $DATABASE_URL && npm run db:migrate
         env:
           DATABASE_URL: ${{ steps.heroku-connection-string.outputs.db-connection-string }}
+          # Required for node-pg to connect to the free heroku pg instance
+          PGSSLMODE: no-verify
 
       - name: Clean Heroku credentials
         # Always clean, even on failures
