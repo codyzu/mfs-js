@@ -7,6 +7,7 @@ const pizzasQuery = `query {
   pizzaList {
     id
     name
+    description
     image
     toppings {
       id
@@ -42,11 +43,7 @@ export default function Pizzas() {
         <Col>
           <Container className="px-0">
             {data.pizzaList.map((pizza) => (
-              <PizzaOverview
-                key={pizza.id}
-                {...pizza}
-                description="Take a voyage to the center of Italy where the combination of fresh basil and mozerella make for a mouth watering delight!"
-              />
+              <PizzaOverview key={pizza.id} {...pizza} />
             ))}
           </Container>
         </Col>

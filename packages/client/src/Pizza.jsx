@@ -5,7 +5,7 @@ import Meat from './salami.svg';
 import Vegetable from './vegetables.svg';
 import pizzaProps from './pizza-props';
 
-export default function Pizza({name, toppings, image}) {
+export default function Pizza({name, description, toppings, image}) {
   return (
     <Container>
       <Row>
@@ -24,12 +24,7 @@ export default function Pizza({name, toppings, image}) {
         <Col xs={12} sm="auto">
           <h1 className="display-3">{name}</h1>
         </Col>
-        <Col>
-          Take a voyage to the center of Italy where the combination of fresh
-          basil and mozerella make for a mouth watering delight! Take a voyage
-          to the center of Italy where the combination of fresh basil and
-          mozerella make for a mouth watering delight!
-        </Col>
+        <Col>{description}</Col>
       </Row>
       <Row className="mt-3">
         <Col>

@@ -1,13 +1,14 @@
-/* eslint-disable unicorn/prefer-module */
-const parse = require('pg-connection-string');
+import parse from 'pg-connection-string';
+import connectionString from './connection-string.js';
 
-// eslint-disable-next-line import/extensions
-const pgConfig = parse(require('./connection-string'));
+const pgConfig = parse(connectionString);
 
-module.exports = {
+const config = {
   migrationPattern: 'migrations/*',
   driver: 'pg',
   // Postgrator expects username (not user)
   username: pgConfig.user,
   ...pgConfig,
 };
+
+export default config;

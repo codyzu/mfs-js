@@ -45,8 +45,9 @@ const typeDefs = `
   }
 
   type Pizza {
-    id: Int!
+    id: String!
     name: String!
+    description: String
     image: String
     toppings: [Topping]!
   }
@@ -54,7 +55,7 @@ const typeDefs = `
   type Query {
     toppingList: [Topping]!
     pizzaList: [Pizza]!
-    pizza(id: Int!): Pizza!
+    pizza(id: String!): Pizza!
   }
 `;
 
