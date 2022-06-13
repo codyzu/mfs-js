@@ -12,7 +12,14 @@ describe('Renders pizza list', () => {
 
   it('Displays each pizza', () => {
     const data = {
-      pizzaList: [{name: 'test pizza', id: 1, toppings: []}],
+      pizzaList: [
+        {
+          id: 'pizza1',
+          name: 'test pizza',
+          description: 'this pizza is perfect for testing',
+          toppings: [],
+        },
+      ],
     };
     renderWithQuery(<Pizzas />, () => fromValue({data}));
     expect(screen.getByText(/test pizza/i)).toBeInTheDocument();

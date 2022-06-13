@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 const pizzaProps = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   image: PropTypes.string,
