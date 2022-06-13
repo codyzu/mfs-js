@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import Pizza from '../src/Pizza';
+import Pizza from '../src/components/Pizza';
 import {render, screen} from './utils';
 
 describe('Simple working test', () => {

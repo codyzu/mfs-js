@@ -1,8 +1,8 @@
 import {Container, Row, Col, Table} from 'reactstrap';
-import Cheese from './cheese.svg';
-import Sauce from './soup-ladle.svg';
-import Meat from './salami.svg';
-import Vegetable from './vegetables.svg';
+import Cheese from '../icons/cheese.svg';
+import Sauce from '../icons/soup-ladle.svg';
+import Meat from '../icons/salami.svg';
+import Vegetable from '../icons/vegetables.svg';
 import pizzaProps from './pizza-props';
 
 export default function Pizza({name, description, toppings, image}) {

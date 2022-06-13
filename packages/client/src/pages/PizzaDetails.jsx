@@ -1,8 +1,8 @@
 import {useQuery} from 'urql';
 import {useParams} from 'react-router-dom';
 import {Container} from 'reactstrap';
-import Pizza from './Pizza';
-import Loading from './Loading';
+import Pizza from '../components/Pizza';
+import Loading from '../components/Loading';
 
 const pizzaQuery = `query($pizzaId: String!) { 
   pizza(id: $pizzaId) {

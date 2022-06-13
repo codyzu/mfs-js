@@ -1,7 +1,7 @@
 import {describe, expect, it} from 'vitest';
 import {never, fromValue} from 'wonka';
 import {CombinedError} from 'urql';
-import Pizzas from '../src/Pizzas';
+import Pizzas from '../src/components/Pizzas';
 import {renderWithQuery, screen} from './utils';
 
 describe('Renders pizza list', () => {

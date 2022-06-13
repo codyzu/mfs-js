@@ -1,5 +1,5 @@
 import {Container, Row, Col} from 'reactstrap';
-import Pizzas from './Pizzas';
+import Pizzas from '../components/Pizzas';
 
 export default function Menu() {
   return (

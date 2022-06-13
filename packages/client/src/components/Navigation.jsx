@@ -10,7 +10,7 @@ import {
 import {Link, NavLink as RRNavLink} from 'react-router-dom';
 import {useState} from 'react';
 import {BsGithub} from 'react-icons/bs';
-import Slice from './favicon.svg';
+import Slice from '../icons/favicon.svg';
 
 export default function Navigation() {
   const [collapsed, setCollapsed] = useState(true);
