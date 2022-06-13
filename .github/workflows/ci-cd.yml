@@ -85,21 +85,28 @@ jobs:
         env:
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
 
-      - name: Debug DB
+      # - name: Debug DB
+      #   if: github.event_name == 'push' && github.ref_name == 'main'
+      #   run: |
+      #     heroku config:get -a $HEROKU_APP_NAME DATABASE_URL
+      #     echo "hello"
+      #     TEST_VAR=cody DATABASE_URL=`heroku config:get -a $HEROKU_APP_NAME DATABASE_URL` echo "url $DATABASE_URL $TEST_VAR"
+      #     DATABASE_URL=`heroku config:get -a $HEROKU_APP_NAME DATABASE_URL` echo ${DATABASE_URL} && npm run db:migrate
+      #   env:
+      #     HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+
+      - name: Production db connection string
+        id: connection-string
         if: github.event_name == 'push' && github.ref_name == 'main'
-        run: |
-          heroku config:get -a $HEROKU_APP_NAME DATABASE_URL
-          echo "hello"
-          TEST_VAR=cody DATABASE_URL=`heroku config:get -a $HEROKU_APP_NAME DATABASE_URL` echo "url $DATABASE_URL $TEST_VAR"
-          DATABASE_URL=`heroku config:get -a $HEROKU_APP_NAME DATABASE_URL` echo ${DATABASE_URL} && npm run db:migrate
+        run: echo "::set-output name=db-connection-string::$(heroku config:get -a $HEROKU_APP_NAME DATABASE_URL)"
         env:
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
 
       - name: Migrate production db
         if: github.event_name == 'push' && github.ref_name == 'main'
-        run: DATABASE_URL=`heroku config:get -a $HEROKU_APP_NAME DATABASE_URL` echo ${DATABASE_URL} && npm run db:migrate
+        run: echo $DATABASE_URL && npm run db:migrate
         env:
-          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+          DATABASE_URL: ${{ steps.connection-string.db-connection-string }}
 
       - name: Clean Heroku credentials
         # Always clean, even on failures
