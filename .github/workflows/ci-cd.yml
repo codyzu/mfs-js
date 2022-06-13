@@ -51,6 +51,8 @@ jobs:
         run: npm ci
 
       - name: Format and lint
+        # turborepo root scripts don't run for dependsOn pipelines
+        # Explicitly run format and lint so that the root scripts run for each
         run: npm run format:all && npm run lint:all
 
       - name: Migrate local db
