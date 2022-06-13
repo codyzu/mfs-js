@@ -85,16 +85,6 @@ jobs:
         env:
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
 
-      # - name: Debug DB
-      #   if: github.event_name == 'push' && github.ref_name == 'main'
-      #   run: |
-      #     heroku config:get -a $HEROKU_APP_NAME DATABASE_URL
-      #     echo "hello"
-      #     TEST_VAR=cody DATABASE_URL=`heroku config:get -a $HEROKU_APP_NAME DATABASE_URL` echo "url $DATABASE_URL $TEST_VAR"
-      #     DATABASE_URL=`heroku config:get -a $HEROKU_APP_NAME DATABASE_URL` echo ${DATABASE_URL} && npm run db:migrate
-      #   env:
-      #     HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-
       - name: Production db connection string
         id: heroku-connection-string
         if: github.event_name == 'push' && github.ref_name == 'main'
