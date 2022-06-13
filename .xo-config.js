@@ -24,11 +24,5 @@ module.exports = {
       files: 'packages/**/*.test.js',
       envs: ['es2021', 'jest'],
     },
-    {
-      files: 'packages/db/**/*.js',
-      rules: {
-        'unicorn/prefer-module': 'off',
-      },
-    },
   ],
 };
