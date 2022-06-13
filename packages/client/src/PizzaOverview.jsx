@@ -5,7 +5,7 @@ import pizzaProps from './pizza-props';
 export default function PizzaOverview({id, name, image, description}) {
   return (
     <Row className="flex-lg-row-reverse align-items-center mb-5 p-5 rounded shadow-lg">
-      <Col xs={10} sm={10} lg={6}>
+      <Col lg={6} className="mb-3 mb-lg-0">
         <div className="ratio ratio-16x9">
           <img
             src={image}
