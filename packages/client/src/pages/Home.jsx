@@ -6,7 +6,7 @@ function Home() {
   return (
     <>
       <div
-        className="vw-100 vh-100 overflow-hidden text-center d-flex justify-content-center"
+        className="vw-100 vh-100 mw-100 overflow-hidden text-center d-flex justify-content-center"
         style={{
           backgroundImage:
             'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/images/pizza1.jpg")',
