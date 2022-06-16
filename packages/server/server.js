@@ -7,6 +7,7 @@ import frontEndRoutePaths from '../client/src/route-paths.js';
 import * as db from './src/db.js';
 
 const app = fastify({
+  ignoreTrailingSlash: true,
   logger: {
     prettyPrint: {
       translateTime: 'HH:MM:ss Z',
