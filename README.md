@@ -6,6 +6,8 @@ Modern full-stack javascript
 
 This repo serves a POC of my talk on modern full-stack javascript.
 
+The site is live at https://pizza.codyfactory.eu
+
 ## Setup
 
 1. Clone
