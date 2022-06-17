@@ -8,6 +8,8 @@ This repo serves a POC of my talk on modern full-stack javascript.
 
 The site is live at https://pizza.codyfactory.eu
 
+Checkout the [accompanying slides](https://docs.google.com/presentation/d/16OHcPhk1GKjprCFymcK_PAiPbvM7tGG0mCudFzVvHaU/edit?usp=sharing) from my presentation at ReactSummit 2022 in Amsterdam.
+
 ## Setup
 
 1. Clone
