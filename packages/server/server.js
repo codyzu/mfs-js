@@ -9,11 +9,14 @@ import * as db from './src/db.js';
 const app = fastify({
   ignoreTrailingSlash: true,
   logger: {
-    prettyPrint: {
-      translateTime: 'HH:MM:ss Z',
-      ignore: 'pid,hostname',
-      singleLine: true,
-      colorize: true,
+    transport: {
+      target: 'pino-pretty',
+      options: {
+        translateTime: 'HH:MM:ss Z',
+        ignore: 'pid,hostname',
+        singleLine: true,
+        colorize: true,
+      },
     },
   },
 });

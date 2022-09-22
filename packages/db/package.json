@@ -18,7 +18,7 @@
   "dependencies": {
     "nanoid": "^4.0.0",
     "nanoid-dictionary": "^4.3.0",
-    "pg": "^8.7.3",
+    "pg": "^8.8.0",
     "postgrator-cli": "^6.0.0",
     "url-slug": "^3.0.4"
   }
