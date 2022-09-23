@@ -3,7 +3,6 @@ import * as path from 'node:path';
 import fastify from 'fastify';
 import {makeExecutableSchema} from '@graphql-tools/schema';
 import connectionString from '../db/connection-string.js';
-import frontEndRoutePaths from '../client/src/route-paths.js';
 import * as db from './src/db.js';
 
 const app = fastify({
@@ -28,14 +27,13 @@ const dirname = url.fileURLToPath(new URL('.', import.meta.url));
 app.register(import('@fastify/static'), {
   root: path.resolve(dirname, '../client/dist'),
   maxAge: '30d',
+  wildcard: false, // We will add a wildcard path to redirect everything to index.html
 });
 
-// Serve the index for each route path in the front-end
-for (const path of Object.values(frontEndRoutePaths)) {
-  app.get(path, (_, reply) => {
-    reply.sendFile('index.html');
-  });
-}
+// Wildcard any path to the front-end app.
+// The front-end will handle 404s, so we always send index.html.
+// Fastify will always give precedence to static routes, so this makes the app compatible with react-router.
+app.get('*', (_, reply) => reply.sendFile('index.html'));
 
 app.register(import('@fastify/postgres'), {
   connectionString,
